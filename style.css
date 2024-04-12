@@ -1,0 +1,21 @@
+.right {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  height: 100%;
+  width: 30%;
+  border: 1px solid black;
+}
+.left {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  height: 100%;
+  width: 30%;
+  border: 1px solid black;
+}
+.center {
+  width: 40%;
+  height: 100%;
+  border: 1px solid black;
+}
