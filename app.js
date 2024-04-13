@@ -1,46 +1,45 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const taskForm = document.getElementById("taskForm");
-  const taskInput = document.getElementById("taskInput");
-  const taskList = document.getElementById("taskList");
+const del = document.querySelectorAll(".del");
+const complete = document.querySelectorAll(".complete");
+const add = document.querySelector("#button-addon2");
+const taskInput = document.getElementById("taskInput");
+const edit = document.querySelectorAll(".edit");
+const retry = document.querySelectorAll(".retry");
+let text = "";
 
-  // Function to add a new task
-  function addTask(taskName) {
-    const li = document.createElement("li");
-    li.className =
-      "list-group-item d-flex justify-content-between align-items-center";
-    li.innerHTML = `
-        ${taskName}
-        <div>
-          <input type="checkbox" class="form-check-input me-2" />
-          <button class="btn btn-danger delete-btn">Delete</button>
-        </div>
-      `;
-    taskList.appendChild(li);
-  }
-
-  // Event listener for adding a new task
-  taskForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const taskName = taskInput.value.trim();
-    if (taskName !== "") {
-      addTask(taskName);
-      taskInput.value = "";
-    }
+for (delBtn of del) {
+  delBtn.addEventListener("click", () => {
+    console.log("delete");
+    // delete the item
   });
+}
 
-  // Event delegation for deleting a task
-  taskList.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-btn")) {
-      const listItem = e.target.closest(".list-group-item");
-      listItem.remove();
-    }
+for (completeBtn of complete) {
+  completeBtn.addEventListener("click", () => {
+    console.log("complete");
+    // mark the item as complete
   });
+}
 
-  // Event delegation for marking a task as completed
-  taskList.addEventListener("change", function (e) {
-    if (e.target.matches('input[type="checkbox"]')) {
-      const listItem = e.target.closest(".list-group-item");
-      listItem.classList.toggle("completed");
-    }
-  });
+add.addEventListener("click", () => {
+  const task = taskInput.value; // Changed add.innertext to taskInput.value to get the input value
+  console.log(task);
+  text = task;
+  // text = task; // You can use this if you need to store the task text in a variable
+  // Add your code to add the task to a list or perform any other action with the task text
 });
+
+for (editBtn of edit) {
+  editBtn.addEventListener("click", () => {
+    console.log("edit");
+    // edit the item
+  });
+}
+
+for (retryBtn of retry) {
+  retryBtn.addEventListener("click", () => {
+    console.log("retry");
+    // mark the item as retry
+  });
+}
+
+console.log(text);
