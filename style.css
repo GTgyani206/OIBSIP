@@ -1,5 +1,6 @@
 body {
   display: flex;
+  background: linear-gradient(to right, #a9f5ce, #fbfbfb);
   /* flex-wrap: wrap; */
 }
 .right {
@@ -8,7 +9,12 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   height: 100vh;
-  border: 1px solid black;
+}
+.opt {
+  background-color: #fbfbfb;
+  border-radius: 2rem;
+  padding: 2rem;
+  height: 100vh;
 }
 .left {
   display: flex;
@@ -16,14 +22,21 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   height: 100vh;
-  border: 1px solid black;
+}
+.dateNtime {
+  background-color: #fbfbfb;
+  padding: 2rem;
+  border-radius: 2rem;
 }
 .center {
   flex: 1;
-  height: 100vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
+}
+.toDo {
+  background-color: #fbfbfb;
+  padding: 2rem;
+  border-radius: 2rem;
 }
