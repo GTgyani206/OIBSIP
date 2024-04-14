@@ -42,4 +42,19 @@ for (retryBtn of retry) {
   });
 }
 
-console.log(text);
+let qouteUrl = "https://api.quotable.io/random";
+const Qoute = document.querySelector(".qoute");
+
+function getQuote() {
+  axios.get(qouteUrl).then((response) => {
+    let qoute = response.data.content;
+    let author = response.data.author;
+    let finalqoute = `<p>${qoute}</p> <p>-${author}</p>`;
+
+    const p = document.createElement("p");
+    p.innerHTML = finalqoute;
+    Qoute.appendChild(p);
+  });
+}
+
+getQuote();

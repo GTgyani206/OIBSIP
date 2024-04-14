@@ -15,6 +15,7 @@ body {
   border-radius: 2rem;
   padding: 2rem;
   height: 100vh;
+  width: max-content;
 }
 .left {
   display: flex;
@@ -26,6 +27,7 @@ body {
 .dateNtime {
   background-color: #fbfbfb;
   padding: 2rem;
+  width: max-content;
   border-radius: 2rem;
 }
 .center {
