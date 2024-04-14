@@ -57,4 +57,16 @@ function getQuote() {
   });
 }
 
+function getTime() {
+  let time = new Date();
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+  let seconds = time.getSeconds();
+  let finalTime = `<center><h1>${hours}:${minutes}:${seconds}</h1></center`;
+  const timeDiv = document.querySelector(".time");
+  timeDiv.innerHTML = finalTime;
+}
+
+setInterval(getTime, 1000);
+
 getQuote();
