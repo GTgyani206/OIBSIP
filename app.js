@@ -1,7 +1,7 @@
 const del = document.querySelectorAll(".del");
 const complete = document.querySelectorAll(".complete");
-const add = document.querySelector("#button-addon2");
-const taskInput = document.getElementById("taskInput");
+const add = document.querySelector(".task-btn"); // Changed selector to match the button's class
+const taskInput = document.querySelector(".task-text"); // Changed selector to match the input's class
 const edit = document.querySelectorAll(".edit");
 const retry = document.querySelectorAll(".retry");
 let text = "";
@@ -21,7 +21,7 @@ for (completeBtn of complete) {
 }
 
 add.addEventListener("click", () => {
-  const task = taskInput.value; // Changed add.innertext to taskInput.value to get the input value
+  const task = taskInput.value; // Changed to use the correct variable name and selector
   console.log(task);
   text = task;
   // text = task; // You can use this if you need to store the task text in a variable
@@ -42,18 +42,18 @@ for (retryBtn of retry) {
   });
 }
 
-let qouteUrl = "https://api.quotable.io/random";
-const Qoute = document.querySelector(".qoute");
+let quoteUrl = "https://api.quotable.io/random"; // Corrected variable name
+const Quote = document.querySelector(".quote"); // Corrected selector name
 
 function getQuote() {
-  axios.get(qouteUrl).then((response) => {
-    let qoute = response.data.content;
+  axios.get(quoteUrl).then((response) => {
+    let quote = response.data.content; // Corrected variable name
     let author = response.data.author;
-    let finalqoute = `<p>${qoute}</p> <p>-${author}</p>`;
+    let finalQuote = `<p>${quote}</p> <p>-${author}</p>`; // Corrected variable name
 
     const p = document.createElement("p");
-    p.innerHTML = finalqoute;
-    Qoute.appendChild(p);
+    p.innerHTML = finalQuote;
+    Quote.appendChild(p);
   });
 }
 
