@@ -62,7 +62,15 @@ function getTime() {
   let hours = time.getHours();
   let minutes = time.getMinutes();
   let seconds = time.getSeconds();
-  let finalTime = `<center><h1>${hours}:${minutes}:${seconds}</h1></center`;
+
+  let ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  let finalTime = `<center><h1>${hours}:${minutes}:${seconds} ${ampm}</h1></center>`;
   const timeDiv = document.querySelector(".time");
   timeDiv.innerHTML = finalTime;
 }
