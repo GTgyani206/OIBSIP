@@ -20,140 +20,153 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="left">
-      <div class="dateNtime">
-        <div class="container time"><h2>Time</h2></div>
-        <div class="container">
-          <h2>Calendar</h2>
-        </div>
-
-        <div class="container qoute">
-          <h2>Quote of The Day</h2>
-        </div>
-      </div>
-    </div>
-    <div class="container center">
-      <div class="toDo">
-        <h1 class="text-center mt-5">To-Do List</h1>
-        <form class="mt-5">
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Add a new task"
-              aria-label="Add a new task"
-              aria-describedby="button-addon2"
-            />
-            <button class="btn btn-primary add" id="button-addon2">
-              <i class="fa-solid fa-plus"></i>
-            </button>
+    <nav>
+      <button class="btn btn-lg btn-dark m-3 time">time</button
+      ><button class="btn btn btn-outline-dark m-3">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </nav>
+    <div class="container content p-0">
+      <div class="left">
+        <div class="dateNtime">
+          <div class="container">
+            <h2>Calendar</h2>
           </div>
-        </form>
-        <ul class="list-group">
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
-            Task 1
-            <div class="btn-grp">
-              <button class="btn btn-success complete" title="Completed">
-                <i class="fa-solid fa-check"></i>
-              </button>
-              <button class="btn btn-danger del" title="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-              <button class="btn btn-primary edit" title="Edit">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-            </div>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
-            Task 2
-            <div class="btn-grp">
-              <button class="btn btn-success complete" title="Completed">
-                <i class="fa-solid fa-check"></i>
-              </button>
-              <button class="btn btn-danger del" title="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-              <button class="btn btn-primary edit" title="Edit">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-            </div>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
-            Task 3
-            <div class="btn-grp">
-              <button class="btn btn-success complete" title="Completed">
-                <i class="fa-solid fa-check"></i>
-              </button>
-              <button class="btn btn-danger del" title="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-              <button class="btn btn-primary edit" title="Edit">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
-            </div>
-          </li>
-        </ul>
+          <div class="container qoute">
+            <h2>Quote of The Day</h2>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="right">
-      <div class="opt">
-        <div class="container">
-          <h2>Completed</h2>
-          <ul class="list-group">
+
+      <div class="container center">
+        <div class="toDo">
+          <h1 class="text-center mt-5">To-Do List</h1>
+          <form class="mt-5">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Add a new task"
+                aria-label="Add a new task"
+                aria-describedby="button-addon2"
+                id="taskInput"
+              />
+              <button class="btn btn-primary add" type="submit">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </form>
+          <ul class="list-group task-list">
             <li
               class="list-group-item d-flex justify-content-between align-items-center"
             >
-              Task 4
-              <button class="btn btn-danger del" title="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
+              Task 1
+              <div class="btn-grp">
+                <button class="btn btn-success complete" title="Completed">
+                  <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="btn btn-danger del" title="Delete">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+                <button class="btn btn-primary edit" title="Edit">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+              </div>
             </li>
             <li
               class="list-group-item d-flex justify-content-between align-items-center"
             >
-              Task 5
-              <button class="btn btn-danger del" title="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
+              Task 2
+              <div class="btn-grp">
+                <button class="btn btn-success complete" title="Completed">
+                  <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="btn btn-danger del" title="Delete">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+                <button class="btn btn-primary edit" title="Edit">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+              </div>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              Task 3
+              <div class="btn-grp">
+                <button class="btn btn-success complete" title="Completed">
+                  <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="btn btn-danger del" title="Delete">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+                <button class="btn btn-primary edit" title="Edit">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+              </div>
             </li>
           </ul>
         </div>
-        <div class="container">
-          <h2>Missed</h2>
-          <ul class="list-group">
-            <li
-              class="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Task 6
-              <div class="btn-grp">
-                <button class="btn btn-danger del" title="Delete">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-                <button class="btn btn-warning retry">
-                  <i class="fa-solid fa-arrow-rotate-right" title="Retry"></i>
-                </button>
-              </div>
-            </li>
-            <li
-              class="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Task 7
-              <div class="btn-grp">
-                <button class="btn btn-danger del" title="Delete">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-                <button class="btn btn-warning retry" title="Retry">
-                  <i class="fa-solid fa-arrow-rotate-right"></i>
-                </button>
-              </div>
-            </li>
-          </ul>
+      </div>
+      <div class="right">
+        <div class="opt">
+          <div class="">
+            <h2>Completed</h2>
+            <ul class="list-group">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center p-3"
+              >
+                Task 4
+                <div class="btn-grp">
+                  <button class="btn btn-danger del" title="Delete">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+              </li>
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center p-3"
+              >
+                Task 5
+                <div class="btn-grp">
+                  <button class="btn btn-danger del" title="Delete">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="">
+            <h2>Missed</h2>
+            <ul class="list-group">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center p-3"
+              >
+                Task 6
+
+                <div class="btn-grp">
+                  <button class="btn btn-danger del" title="Delete">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <button class="btn btn-warning retry">
+                    <i class="fa-solid fa-arrow-rotate-right" title="Retry"></i>
+                  </button>
+                </div>
+              </li>
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center p-3"
+              >
+                Task 7
+                <div class="btn-grp">
+                  <button class="btn btn-danger del" title="Delete">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <button class="btn btn-warning retry" title="Retry">
+                    <i class="fa-solid fa-arrow-rotate-right"></i>
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

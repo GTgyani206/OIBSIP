@@ -1,10 +1,9 @@
 const del = document.querySelectorAll(".del");
 const complete = document.querySelectorAll(".complete");
-const add = document.querySelector("#button-addon2");
+const add = document.querySelector(".add");
 const taskInput = document.getElementById("taskInput");
 const edit = document.querySelectorAll(".edit");
 const retry = document.querySelectorAll(".retry");
-let text = "";
 
 for (delBtn of del) {
   delBtn.addEventListener("click", () => {
@@ -20,37 +19,46 @@ for (completeBtn of complete) {
   });
 }
 
-add.addEventListener("click", () => {
-  const task = taskInput.value; // get the value of the input
-  console.log(task);
-  text = task;
-});
+try {
+  add.addEventListener("click", () => {
+    let task = taskInput.value;
+    console.log(task);
+    let inp = document.querySelector(".add");
+    inp.append(`${task}`);
+  });
+} catch (err) {
+  console.log(err);
+  next();
+}
 
 for (editBtn of edit) {
   editBtn.addEventListener("click", () => {
     console.log("edit");
-    // edit the item
   });
 }
 
 for (retryBtn of retry) {
   retryBtn.addEventListener("click", () => {
     console.log("retry");
-    // mark the item as retry
   });
 }
 
 let qouteUrl = "https://api.quotable.io/random";
 const Qoute = document.querySelector(".qoute");
-function getQuote() {
-  axios.get(qouteUrl).then((response) => {
-    let qoute = response.data.content;
-    let author = response.data.author;
-    let finalqoute = `<p>${qoute}</p> <p>-${author}</p>`;
-    const p = document.createElement("p");
-    p.innerHTML = finalqoute;
-    Qoute.appendChild(p);
-  });
+try {
+  function getQuote() {
+    axios.get(qouteUrl).then((response) => {
+      let qoute = response.data.content;
+      let author = response.data.author;
+      let finalqoute = `<p>${qoute}</p> <p>-${author}</p>`;
+      const p = document.createElement("p");
+      p.innerHTML = finalqoute;
+      Qoute.appendChild(p);
+    });
+  }
+} catch (err) {
+  console.log(err);
+  next();
 }
 function getTime() {
   let time = new Date();
@@ -69,5 +77,6 @@ function getTime() {
   const timeDiv = document.querySelector(".time");
   timeDiv.innerHTML = finalTime;
 }
+getTime();
 setInterval(getTime, 1000);
-getQuote();
+// getQuote();

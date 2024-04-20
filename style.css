@@ -1,8 +1,24 @@
 body {
-  display: flex;
-  background: linear-gradient(to right, #a9f5ce, #fbfbfb);
-  /* flex-wrap: wrap; */
+  background: linear-gradient(to right, #f9ffdd, #f7e1d0);
 }
+.content {
+  display: flex;
+}
+
+nav {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.btn-grp {
+  margin-left: 2rem !important;
+}
+
+li {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .right {
   display: flex;
   flex-wrap: wrap;
@@ -15,7 +31,6 @@ body {
   border-radius: 2rem;
   padding: 2rem;
   height: 100vh;
-  width: fit-content;
 }
 .left {
   display: flex;
@@ -27,20 +42,19 @@ body {
 .dateNtime {
   background-color: #fbfbfb;
   padding: 2rem;
-  width: fit-content;
   border-radius: 2rem;
 }
 .center {
-  width: fit-content;
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
   padding: 0%;
   flex-direction: column;
   justify-content: center;
+  margin: 2rem;
 }
 .toDo {
   background-color: #fbfbfb;
   padding: 2rem;
   border-radius: 2rem;
-  width: max-content;
 }
