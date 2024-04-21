@@ -21,18 +21,53 @@
   </head>
   <body>
     <nav>
-      <button class="btn btn-lg btn-dark m-3 time">time</button
-      ><button class="btn btn btn-outline-dark m-3">
-        <i class="fa-solid fa-moon"></i>
-      </button>
+      <button class="btn btn-lg btn-dark m-3 time">time</button>
     </nav>
     <div class="container content p-0">
       <div class="left">
         <div class="dateNtime">
           <div class="container">
-            <h2>Calendar</h2>
+            <h2 class="m-5">Calendar</h2>
+            <div class="contianer">
+              <div class="calendar">
+                <div class="calendar-header">
+                  <span class="month-picker" id="month-picker"> May </span>
+                  <div class="year-picker" id="year-picker">
+                    <span class="year-change" id="pre-year">
+                      <pre><</pre>
+                    </span>
+                    <span id="year">2020 </span>
+                    <span class="year-change" id="next-year">
+                      <pre>></pre>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="calendar-body">
+                  <div class="calendar-week-days">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                  </div>
+                  <div class="calendar-days"></div>
+                </div>
+                <div class="calendar-footer"></div>
+                <div class="date-time-formate">
+                  <div class="day-text-formate">TODAY</div>
+                  <div class="date-time-value">
+                    <div class="time-formate">01:41:20</div>
+                    <div class="date-formate">21 - April - 2024</div>
+                  </div>
+                </div>
+                <div class="month-list"></div>
+              </div>
+            </div>
           </div>
-          <div class="container qoute">
+          <div class="container qoute m-5">
             <h2>Quote of The Day</h2>
           </div>
         </div>
