@@ -20,23 +20,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Navbar containing clock -->
+
     <nav>
       <button class="btn btn-lg btn-dark m-3 time">time</button>
     </nav>
+
+    <!-- div element containing whole To-Do project -->
     <div class="container content p-0">
+      <!-- left pane containing calendar and qoute of the day -->
       <div class="left">
         <div class="dateNtime">
           <div class="container">
             <h2 class="m-5">Calendar</h2>
+
+            <!-- Code for calendar
+                  referance codepan -->
+
             <div class="contianer">
               <div class="calendar">
                 <div class="calendar-header">
-                  <span class="month-picker" id="month-picker"> May </span>
+                  <span class="month-picker" id="month-picker"> April </span>
                   <div class="year-picker" id="year-picker">
                     <span class="year-change" id="pre-year">
                       <pre><</pre>
                     </span>
-                    <span id="year">2020 </span>
+                    <span id="year">2024 </span>
                     <span class="year-change" id="next-year">
                       <pre>></pre>
                     </span>
@@ -67,35 +76,31 @@
               </div>
             </div>
           </div>
-          <div class="container qoute m-5">
+
+          <!-- container for qoute of the day -->
+          <div class="container mt-5">
             <h2>Quote of The Day</h2>
+            <div class="qoute mt-3"></div>
           </div>
         </div>
       </div>
 
+      <!-- center div for To-Do list operations: add, delete and update -->
+
       <div class="container center">
-        <div class="toDo">
+        <div class="ToDo">
           <h1 class="text-center mt-5">To-Do List</h1>
           <form class="mt-5">
             <div class="input-group mb-3">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Add a new task"
-                aria-label="Add a new task"
-                aria-describedby="button-addon2"
-                id="taskInput"
-              />
+              <input type="text" id="taskInput" />
               <button class="btn btn-primary add" type="submit">
                 <i class="fa-solid fa-plus"></i>
               </button>
             </div>
           </form>
-          <ul class="list-group task-list">
-            <li
-              class="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Task 1
+          <ul>
+            <span class="todoLi">
+              <li>Task 1</li>
               <div class="btn-grp">
                 <button class="btn btn-success complete" title="Completed">
                   <i class="fa-solid fa-check"></i>
@@ -105,13 +110,10 @@
                 </button>
                 <button class="btn btn-primary edit" title="Edit">
                   <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-              </div>
-            </li>
-            <li
-              class="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Task 2
+                </button></div
+            ></span>
+            <span class="todoLi">
+              <li>Task 2</li>
               <div class="btn-grp">
                 <button class="btn btn-success complete" title="Completed">
                   <i class="fa-solid fa-check"></i>
@@ -121,13 +123,9 @@
                 </button>
                 <button class="btn btn-primary edit" title="Edit">
                   <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-              </div>
-            </li>
-            <li
-              class="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Task 3
+                </button></div></span
+            ><span class="todoLi">
+              <li>Task 3</li>
               <div class="btn-grp">
                 <button class="btn btn-success complete" title="Completed">
                   <i class="fa-solid fa-check"></i>
@@ -137,69 +135,74 @@
                 </button>
                 <button class="btn btn-primary edit" title="Edit">
                   <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-              </div>
-            </li>
+                </button></div
+            ></span>
           </ul>
         </div>
       </div>
+
+      <!-- right div containing Missed and completed tasks -->
       <div class="right">
         <div class="opt">
-          <div class="">
+          <div>
             <h2>Completed</h2>
-            <ul class="list-group">
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center p-3"
-              >
-                Task 4
-                <div class="btn-grp">
-                  <button class="btn btn-danger del" title="Delete">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                </div>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center p-3"
-              >
-                Task 5
-                <div class="btn-grp">
-                  <button class="btn btn-danger del" title="Delete">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                </div>
-              </li>
+            <ul>
+              <span class="todoLi"
+                ><li>
+                  Task 4
+                  <div class="btn-grp">
+                    <button class="btn btn-danger del" title="Delete">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div></li
+              ></span>
+              <span class="todoLi"
+                ><li>
+                  Task 5
+                  <div class="btn-grp">
+                    <button class="btn btn-danger del" title="Delete">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div></li
+              ></span>
             </ul>
           </div>
-          <div class="">
+          <div>
             <h2>Missed</h2>
-            <ul class="list-group">
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center p-3"
-              >
-                Task 6
+            <ul>
+              <span class="todoLi"
+                ><li>
+                  Task 6
 
-                <div class="btn-grp">
-                  <button class="btn btn-danger del" title="Delete">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                  <button class="btn btn-warning retry">
-                    <i class="fa-solid fa-arrow-rotate-right" title="Retry"></i>
-                  </button>
-                </div>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center p-3"
-              >
-                Task 7
-                <div class="btn-grp">
-                  <button class="btn btn-danger del" title="Delete">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                  <button class="btn btn-warning retry" title="Retry">
-                    <i class="fa-solid fa-arrow-rotate-right"></i>
-                  </button>
-                </div>
-              </li>
+                  <div class="btn-grp">
+                    <button class="btn btn-danger del" title="Delete">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button class="btn btn-warning retry">
+                      <i
+                        class="fa-solid fa-arrow-rotate-right"
+                        title="Retry"
+                      ></i>
+                    </button>
+                  </div></li
+              ></span>
+
+              <span class="todoLi"
+                ><li>
+                  Task 7
+
+                  <div class="btn-grp">
+                    <button class="btn btn-danger del" title="Delete">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button class="btn btn-warning retry">
+                      <i
+                        class="fa-solid fa-arrow-rotate-right"
+                        title="Retry"
+                      ></i>
+                    </button>
+                  </div></li
+              ></span>
             </ul>
           </div>
         </div>

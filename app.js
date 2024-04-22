@@ -1,10 +1,12 @@
 const del = document.querySelectorAll(".del");
 const complete = document.querySelectorAll(".complete");
 const add = document.querySelector(".add");
-const taskInput = document.getElementById("taskInput");
 const edit = document.querySelectorAll(".edit");
 const retry = document.querySelectorAll(".retry");
 
+// JS for diffferent buttons and their related functions
+
+//delete button for deleting the listings
 for (delBtn of del) {
   delBtn.addEventListener("click", () => {
     console.log("delete");
@@ -12,6 +14,7 @@ for (delBtn of del) {
   });
 }
 
+//complete button for marking the task as complete
 for (completeBtn of complete) {
   completeBtn.addEventListener("click", () => {
     console.log("complete");
@@ -19,28 +22,31 @@ for (completeBtn of complete) {
   });
 }
 
-try {
-  add.addEventListener("click", () => {
-    let task = taskInput.value;
-    console.log(task);
-  });
-} catch (err) {
-  console.log(err);
-  next();
-}
+//add button to add new task to the existing listing
+add.addEventListener("click", () => {
+  let obj = document.querySelectorAll(".ToDo");
+  let task = taskInput.value;
+  let finalTask = `<p>${task}</p>`;
+  const p = document.createElement("p");
+  p.innerHTML = finalTask;
+  obj.appendChild(p);
+});
 
+//edit button to update the pre existing listing
 for (editBtn of edit) {
   editBtn.addEventListener("click", () => {
     console.log("edit");
   });
 }
 
+//the retry button will reallocate the missed task to current To-Do list
 for (retryBtn of retry) {
   retryBtn.addEventListener("click", () => {
     console.log("retry");
   });
 }
 
+//code for fetching the qoutes from the qouable.io api
 let qouteUrl = "https://api.quotable.io/random";
 const Qoute = document.querySelector(".qoute");
 try {
@@ -58,6 +64,8 @@ try {
   console.log(err);
   next();
 }
+
+//code for extracting time from prebuild Date() function
 function getTime() {
   let time = new Date();
   let hours = time.getHours();
@@ -75,9 +83,12 @@ function getTime() {
   const timeDiv = document.querySelector(".time");
   timeDiv.innerHTML = finalTime;
 }
-getTime();
+
 setInterval(getTime, 1000);
+
 getQuote();
+
+//code for building callendar
 const isLeapYear = (year) => {
   return (
     (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) ||
