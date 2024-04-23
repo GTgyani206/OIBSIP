@@ -6,21 +6,95 @@ const retry = document.querySelectorAll(".retry");
 
 // JS for diffferent buttons and their related functions
 
-//delete button for deleting the listings
-for (delBtn of del) {
-  delBtn.addEventListener("click", () => {
-    console.log("delete");
-    // delete the item
-  });
-}
+// Function to add a new task to the todo list
+const addTask = () => {
+  // Get the task input value
+  const taskInput = document.querySelector("#taskInput");
+  const taskText = taskInput.value.trim(); // Trim any leading or trailing spaces
 
-//complete button for marking the task as complete
-for (completeBtn of complete) {
-  completeBtn.addEventListener("click", () => {
-    console.log("complete");
-    // mark the item as complete
+  if (taskText !== "") {
+    // Create a new task item
+    const newTaskId = Date.now(); // Generate a unique ID for the new task
+    const newTaskHTML = `
+      <span class="todoLi">
+        <li id="task${newTaskId}">${taskText}</li>
+        <div class="btn-grp">
+          <button class="btn btn-success complete" title="Completed" id="btn${newTaskId}">
+            <i class="fa-solid fa-check"></i>
+          </button>
+          <button class="btn btn-danger del" title="Delete" id="del${newTaskId}">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <button class="btn btn-primary edit" title="Edit" id="edit${newTaskId}">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+        </div>
+      </span>
+    `;
+
+    // Create a new li element and add it to the ul
+    const todoList = document.querySelector(".ToDo ul");
+    const newTaskLi = document.createElement("li");
+    newTaskLi.innerHTML = newTaskHTML;
+    todoList.appendChild(newTaskLi);
+
+    // Clear the task input field after adding the task
+    taskInput.value = "";
+
+    console.log(`New task added with ID task${newTaskId}`);
+
+    // Reattach event listeners for buttons after adding a new task
+    attachButtonEventListeners();
+  } else {
+    console.log("Please enter a valid task.");
+  }
+};
+
+// Function to attach event listeners to buttons
+const attachButtonEventListeners = () => {
+  const completeBtns = document.querySelectorAll(".complete");
+  completeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const taskId = btn.getAttribute("id").replace("btn", "");
+      // Implement complete task functionality
+      console.log(`Complete button clicked for task${taskId}`);
+    });
   });
-}
+
+  const delBtns = document.querySelectorAll(".del");
+  delBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const taskId = btn.getAttribute("id").replace("del", "");
+      // Implement delete task functionality
+      console.log(`Delete button clicked for task${taskId}`);
+    });
+  });
+
+  const editBtns = document.querySelectorAll(".edit");
+  editBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const taskId = btn.getAttribute("id").replace("edit", "");
+      // Implement edit task functionality
+      console.log(`Edit button clicked for task${taskId}`);
+    });
+  });
+
+  const retryBtns = document.querySelectorAll(".retry");
+  retryBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const taskId = btn.getAttribute("id").replace("retry", "");
+      // Implement retry task functionality
+      console.log(`Retry button clicked for task${taskId}`);
+    });
+  });
+};
+
+// Add event listener to the add button
+const addBtn = document.querySelector(".add");
+addBtn.addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent the default form submission behavior
+  addTask(); // Call the addTask function when the button is clicked
+});
 
 //add button to add new task to the existing listing
 add.addEventListener("click", () => {
@@ -29,22 +103,106 @@ add.addEventListener("click", () => {
   let finalTask = `<p>${task}</p>`;
   const p = document.createElement("p");
   p.innerHTML = finalTask;
-  obj.appendChild(p);
+  console.dir(obj);
 });
 
-//edit button to update the pre existing listing
-for (editBtn of edit) {
-  editBtn.addEventListener("click", () => {
-    console.log("edit");
-  });
-}
+// Function to delete a task
+const deleteTask = (taskId) => {
+  // Find the task element to delete
+  const taskToDelete = document.querySelector(`#task${taskId}`);
+  if (taskToDelete) {
+    // Remove the task element
+    taskToDelete.parentElement.remove();
+    console.log(`Task ${taskId} deleted.`);
+  }
+};
 
-//the retry button will reallocate the missed task to current To-Do list
-for (retryBtn of retry) {
-  retryBtn.addEventListener("click", () => {
-    console.log("retry");
+// Event listener for delete buttons
+const deleteBtns = document.querySelectorAll(".del");
+deleteBtns.forEach((deleteBtn) => {
+  deleteBtn.addEventListener("click", () => {
+    const taskId = deleteBtn.getAttribute("id").replace("del", "");
+    deleteTask(taskId);
   });
-}
+});
+
+// Function to edit a task
+const editTask = (taskId) => {
+  const taskToEdit = document.querySelector(`#task${taskId}`);
+  if (taskToEdit) {
+    const newTaskText = prompt("Enter the new task text:");
+    if (newTaskText !== null && newTaskText.trim() !== "") {
+      taskToEdit.textContent = newTaskText;
+      console.log(`Task ${taskId} edited.`);
+    }
+  }
+};
+
+// Event listener for edit buttons
+const editBtns = document.querySelectorAll(".edit");
+editBtns.forEach((editBtn) => {
+  editBtn.addEventListener("click", () => {
+    const taskId = editBtn.getAttribute("id").replace("edit", "");
+    editTask(taskId);
+  });
+});
+
+// Function to retry a task
+const retryTask = (taskId) => {
+  // Move the task back to the todo list
+  const taskToRetry = document.querySelector(`#task${taskId}`);
+  if (taskToRetry) {
+    const todoList = document.querySelector(".ToDo ul");
+    todoList.appendChild(taskToRetry.parentElement);
+    console.log(`Task ${taskId} retried.`);
+  }
+};
+
+// Event listener for retry buttons
+const retryBtns = document.querySelectorAll(".retry");
+retryBtns.forEach((retryBtn) => {
+  retryBtn.addEventListener("click", () => {
+    const taskId = retryBtn.getAttribute("id").replace("retry", "");
+    retryTask(taskId);
+  });
+});
+
+// Function to move task to missed section if deadline is passed
+const moveTaskToMissed = (taskId, deadline) => {
+  const currentTime = new Date();
+  const taskDeadline = new Date(deadline);
+
+  if (currentTime > taskDeadline) {
+    // Move the task to the missed section
+    const missedTask = document.querySelector(`#task${taskId}`);
+    const missedList = document.querySelector(".missed-list");
+
+    // Clone the task item and add it to the missed list
+    const clonedTask = missedTask.cloneNode(true);
+    missedList.appendChild(clonedTask);
+
+    // Remove the task from its current location
+    missedTask.remove();
+
+    console.log(`Task ${taskId} moved to the missed section.`);
+  }
+};
+
+// Sample deadline (in milliseconds) for Task 1 (10 seconds from now)
+const deadlineTask1 = Date.now() + 10000;
+
+// Call the moveTaskToMissed function for Task 1
+moveTaskToMissed(1, deadlineTask1);
+
+// Repeat the process for other tasks with their respective deadlines
+// ...
+
+// You can set up a setInterval to continuously check and move tasks based on deadlines
+setInterval(() => {
+  // Check and move tasks here
+  moveTaskToMissed(1, deadlineTask1);
+  // Repeat for other tasks
+}, 1000); // Check every second (you can adjust the interval as needed)
 
 //code for fetching the qoutes from the qouable.io api
 let qouteUrl = "https://api.quotable.io/random";

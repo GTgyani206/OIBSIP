@@ -93,53 +93,58 @@
           <form class="mt-5">
             <div class="input-group mb-3">
               <input type="text" id="taskInput" />
-              <button class="btn btn-primary add" type="submit">
+              <button class="btn btn-primary add" type="submit" for="input">
                 <i class="fa-solid fa-plus"></i>
               </button>
             </div>
           </form>
           <ul>
-            <span class="todoLi">
-              <li>Task 1</li>
-              <div class="btn-grp">
-                <button class="btn btn-success complete" title="Completed">
-                  <i class="fa-solid fa-check"></i>
-                </button>
-                <button class="btn btn-danger del" title="Delete">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-                <button class="btn btn-primary edit" title="Edit">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button></div
-            ></span>
-            <span class="todoLi">
-              <li>Task 2</li>
-              <div class="btn-grp">
-                <button class="btn btn-success complete" title="Completed">
-                  <i class="fa-solid fa-check"></i>
-                </button>
-                <button class="btn btn-danger del" title="Delete">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-                <button class="btn btn-primary edit" title="Edit">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button></div></span
-            ><span class="todoLi">
-              <li>Task 3</li>
-              <div class="btn-grp">
-                <button class="btn btn-success complete" title="Completed">
-                  <i class="fa-solid fa-check"></i>
-                </button>
-                <button class="btn btn-danger del" title="Delete">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
-                <button class="btn btn-primary edit" title="Edit">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button></div
-            ></span>
-          </ul>
+            <ul>
+              <span class="todoLi">
+                <li id="task1713884000005">Task 1</li>
+                <div class="btn-grp">
+                  <button class="btn btn-success complete" title="Completed" id="btn1713884000005">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="btn btn-danger del" title="Delete" id="del1713884000005">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <button class="btn btn-primary edit" title="Edit" id="edit1713884000005">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </div>
+              </span>
+              <span class="todoLi">
+                <li id="task1713884000006">Task 2</li>
+                <div class="btn-grp">
+                  <button class="btn btn-success complete" title="Completed" id="btn1713884000006">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="btn btn-danger del" title="Delete" id="del1713884000006">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <button class="btn btn-primary edit" title="Edit" id="edit1713884000006">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </div>
+              </span>
+              <span class="todoLi">
+                <li id="task1713884000007">Task 3</li>
+                <div class="btn-grp">
+                  <button class="btn btn-success complete" title="Completed" id="btn1713884000007">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="btn btn-danger del" title="Delete" id="del1713884000007">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <button class="btn btn-primary edit" title="Edit" id="edit1713884000007">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </div>
+              </span>
+            </ul>
+          </div>
         </div>
-      </div>
 
       <!-- right div containing Missed and completed tasks -->
       <div class="right">
@@ -147,62 +152,49 @@
           <div>
             <h2>Completed</h2>
             <ul>
-              <span class="todoLi"
-                ><li>
-                  Task 4
-                  <div class="btn-grp">
-                    <button class="btn btn-danger del" title="Delete">
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                  </div></li
-              ></span>
-              <span class="todoLi"
-                ><li>
-                  Task 5
-                  <div class="btn-grp">
-                    <button class="btn btn-danger del" title="Delete">
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                  </div></li
-              ></span>
+              <span class="todoLi">
+                <li id="2001">Task 4</li>
+                <div class="btn-grp">
+                  <button class="btn btn-danger del" title="Delete" id="del2001">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+              </span>
+              <span class="todoLi">
+                <li id="2002">Task 5</li>
+                <div class="btn-grp">
+                  <button class="btn btn-danger del" title="Delete" id="del2002">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+              </span>
             </ul>
           </div>
           <div>
             <h2>Missed</h2>
             <ul>
-              <span class="todoLi"
-                ><li>
-                  Task 6
-
-                  <div class="btn-grp">
-                    <button class="btn btn-danger del" title="Delete">
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                    <button class="btn btn-warning retry">
-                      <i
-                        class="fa-solid fa-arrow-rotate-right"
-                        title="Retry"
-                      ></i>
-                    </button>
-                  </div></li
-              ></span>
-
-              <span class="todoLi"
-                ><li>
-                  Task 7
-
-                  <div class="btn-grp">
-                    <button class="btn btn-danger del" title="Delete">
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                    <button class="btn btn-warning retry">
-                      <i
-                        class="fa-solid fa-arrow-rotate-right"
-                        title="Retry"
-                      ></i>
-                    </button>
-                  </div></li
-              ></span>
+              <span class="todoLi">
+                <li id="3001">Task 6</li>
+                <div class="btn-grp">
+                  <button class="btn btn-danger del" title="Delete" id="del3001">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <button class="btn btn-warning retry" id="retry3001">
+                    <i class="fa-solid fa-arrow-rotate-right" title="Retry"></i>
+                  </button>
+                </div>
+              </span>
+              <span class="todoLi">
+                <li id="3002">Task 7</li>
+                <div class="btn-grp">
+                  <button class="btn btn-danger del" title="Delete" id="del3002">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <button class="btn btn-warning retry" id="retry3002">
+                    <i class="fa-solid fa-arrow-rotate-right" title="Retry"></i>
+                  </button>
+                </div>
+              </span>
             </ul>
           </div>
         </div>
