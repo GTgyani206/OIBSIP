@@ -55,6 +55,7 @@ const attachButtonEventListeners = () => {
   const completeBtns = document.querySelectorAll(".complete");
   completeBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
+      // btn.innerHTML = "Completed";
       const taskId = btn.getAttribute("id").replace("btn", "");
       // Implement complete task functionality
       console.log(`Complete button clicked for task${taskId}`);
@@ -96,16 +97,6 @@ addBtn.addEventListener("click", (event) => {
   addTask(); // Call the addTask function when the button is clicked
 });
 
-//add button to add new task to the existing listing
-add.addEventListener("click", () => {
-  let obj = document.querySelectorAll(".ToDo");
-  let task = taskInput.value;
-  let finalTask = `<p>${task}</p>`;
-  const p = document.createElement("p");
-  p.innerHTML = finalTask;
-  console.dir(obj);
-});
-
 // Function to delete a task
 const deleteTask = (taskId) => {
   // Find the task element to delete
@@ -113,7 +104,7 @@ const deleteTask = (taskId) => {
   if (taskToDelete) {
     // Remove the task element
     taskToDelete.parentElement.remove();
-    console.log(`Task ${taskId} deleted.`);
+    alert = `Task ${taskId} deleted.`;
   }
 };
 
@@ -133,7 +124,7 @@ const editTask = (taskId) => {
     const newTaskText = prompt("Enter the new task text:");
     if (newTaskText !== null && newTaskText.trim() !== "") {
       taskToEdit.textContent = newTaskText;
-      console.log(`Task ${taskId} edited.`);
+      alert = `Task ${taskId} edited`;
     }
   }
 };
@@ -154,7 +145,7 @@ const retryTask = (taskId) => {
   if (taskToRetry) {
     const todoList = document.querySelector(".ToDo ul");
     todoList.appendChild(taskToRetry.parentElement);
-    console.log(`Task ${taskId} retried.`);
+    alert = `Task ${taskId} retried.`;
   }
 };
 
@@ -166,43 +157,6 @@ retryBtns.forEach((retryBtn) => {
     retryTask(taskId);
   });
 });
-
-// Function to move task to missed section if deadline is passed
-const moveTaskToMissed = (taskId, deadline) => {
-  const currentTime = new Date();
-  const taskDeadline = new Date(deadline);
-
-  if (currentTime > taskDeadline) {
-    // Move the task to the missed section
-    const missedTask = document.querySelector(`#task${taskId}`);
-    const missedList = document.querySelector(".missed-list");
-
-    // Clone the task item and add it to the missed list
-    const clonedTask = missedTask.cloneNode(true);
-    missedList.appendChild(clonedTask);
-
-    // Remove the task from its current location
-    missedTask.remove();
-
-    console.log(`Task ${taskId} moved to the missed section.`);
-  }
-};
-
-// Sample deadline (in milliseconds) for Task 1 (10 seconds from now)
-const deadlineTask1 = Date.now() + 10000;
-
-// Call the moveTaskToMissed function for Task 1
-moveTaskToMissed(1, deadlineTask1);
-
-// Repeat the process for other tasks with their respective deadlines
-// ...
-
-// You can set up a setInterval to continuously check and move tasks based on deadlines
-setInterval(() => {
-  // Check and move tasks here
-  moveTaskToMissed(1, deadlineTask1);
-  // Repeat for other tasks
-}, 1000); // Check every second (you can adjust the interval as needed)
 
 //code for fetching the qoutes from the qouable.io api
 let qouteUrl = "https://api.quotable.io/random";
