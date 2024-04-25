@@ -6,7 +6,7 @@ const retry = document.querySelectorAll(".retry");
 
 // JS for diffferent buttons and their related functions
 
-// Function to add a new task to the todo list
+// Function to add a new task to the todo list also this function consist of the event listener for new tasks
 const addTask = () => {
   // Get the task input value
   const taskInput = document.querySelector("#taskInput");
@@ -34,7 +34,7 @@ const addTask = () => {
 
     // Create a new li element and add it to the ul
     const todoList = document.querySelector(".ToDo ul");
-    const newTaskLi = document.createElement("li");
+    const newTaskLi = document.createElement("span");
     newTaskLi.innerHTML = newTaskHTML;
     todoList.appendChild(newTaskLi);
 
@@ -55,10 +55,9 @@ const attachButtonEventListeners = () => {
   const completeBtns = document.querySelectorAll(".complete");
   completeBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // btn.innerHTML = "Completed";
       const taskId = btn.getAttribute("id").replace("btn", "");
       // Implement complete task functionality
-      console.log(`Complete button clicked for task${taskId}`);
+      completeTask(taskId);
     });
   });
 
@@ -67,7 +66,7 @@ const attachButtonEventListeners = () => {
     btn.addEventListener("click", () => {
       const taskId = btn.getAttribute("id").replace("del", "");
       // Implement delete task functionality
-      console.log(`Delete button clicked for task${taskId}`);
+      deleteTask(taskId);
     });
   });
 
@@ -76,16 +75,7 @@ const attachButtonEventListeners = () => {
     btn.addEventListener("click", () => {
       const taskId = btn.getAttribute("id").replace("edit", "");
       // Implement edit task functionality
-      console.log(`Edit button clicked for task${taskId}`);
-    });
-  });
-
-  const retryBtns = document.querySelectorAll(".retry");
-  retryBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const taskId = btn.getAttribute("id").replace("retry", "");
-      // Implement retry task functionality
-      console.log(`Retry button clicked for task${taskId}`);
+      editTask(taskId);
     });
   });
 };
@@ -140,8 +130,33 @@ editBtns.forEach((editBtn) => {
 
 // Function to retry a task
 const retryTask = (taskId) => {
-  // Move the task back to the todo list
+  // Move the task back to the todo list and remove the retry button and edit and complete buttons
   const taskToRetry = document.querySelector(`#task${taskId}`);
+  const taskToRetryBtns = document.querySelector(`#retry${taskId}`);
+  const tasktoDelete = document.querySelector(`#del${taskId}`);
+
+  tasktoDelete.remove();
+  taskToRetryBtns.remove();
+
+  const newBtn = `
+        <div class="btn-grp">
+          <button class="btn btn-success complete" title="Completed" id="btn${taskId}">
+            <i class="fa-solid fa-check"></i>
+          </button>
+          <button class="btn btn-danger del" title="Delete" id="del${taskId}">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <button class="btn btn-primary edit" title="Edit" id="edit${taskId}">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+          </div>
+    `;
+
+  const taskToRetryDiv = document.createElement("div.btn-grp");
+  taskToRetryDiv.innerHTML = newBtn;
+  taskToRetry.appendChild(taskToRetryDiv);
+  attachButtonEventListeners();
+
   if (taskToRetry) {
     const todoList = document.querySelector(".ToDo ul");
     todoList.appendChild(taskToRetry.parentElement);
@@ -155,6 +170,32 @@ retryBtns.forEach((retryBtn) => {
   retryBtn.addEventListener("click", () => {
     const taskId = retryBtn.getAttribute("id").replace("retry", "");
     retryTask(taskId);
+  });
+});
+
+//Function for completing the task
+const completeTask = (taskId) => {
+  // Move the task to the completed list and remove extra buttons
+  const taskToComplete = document.querySelector(`#task${taskId}`);
+  const taskToCompleteBtns = document.querySelector(`#btn${taskId}`);
+  const taskToCompleteEdit = document.querySelector(`#edit${taskId}`);
+
+  taskToCompleteBtns.remove();
+  taskToCompleteEdit.remove();
+
+  if (taskToComplete) {
+    const completedList = document.querySelector(".opt div ul");
+    completedList.appendChild(taskToComplete.parentElement);
+    alert = `Task ${taskId} completed.`;
+  }
+};
+
+// Event listener for complete buttons
+const completeBtns = document.querySelectorAll(".complete");
+completeBtns.forEach((completeBtn) => {
+  completeBtn.addEventListener("click", () => {
+    const taskId = completeBtn.getAttribute("id").replace("btn", "");
+    completeTask(taskId);
   });
 });
 
