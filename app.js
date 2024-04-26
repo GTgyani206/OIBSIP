@@ -133,35 +133,34 @@ const retryTask = (taskId) => {
   // Move the task back to the todo list and remove the retry button and edit and complete buttons
   const taskToRetry = document.querySelector(`#task${taskId}`);
   const taskToRetryBtns = document.querySelector(`#retry${taskId}`);
-  const tasktoDelete = document.querySelector(`#del${taskId}`);
+  const taskToDelete = document.querySelector(`#del${taskId}`);
 
-  tasktoDelete.remove();
+  taskToDelete.remove();
   taskToRetryBtns.remove();
 
-  const newBtn = `
-        <div class="btn-grp">
-          <button class="btn btn-success complete" title="Completed" id="btn${taskId}">
-            <i class="fa-solid fa-check"></i>
-          </button>
-          <button class="btn btn-danger del" title="Delete" id="del${taskId}">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-          <button class="btn btn-primary edit" title="Edit" id="edit${taskId}">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-          </div>
-    `;
+  const newBtnDiv = `
+    <div class="btn-grp">
+      <button class="btn btn-success complete" title="Completed" id="btn${taskId}">
+        <i class="fa-solid fa-check"></i>
+      </button>
+      <button class="btn btn-danger del" title="Delete" id="del${taskId}">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button class="btn btn-primary edit" title="Edit" id="edit${taskId}">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </button>
+    </div>
+  `;
 
-  const taskToRetryDiv = document.createElement("div.btn-grp");
-  taskToRetryDiv.innerHTML = newBtn;
-  taskToRetry.appendChild(taskToRetryDiv);
+  const taskToRetrySpan = taskToRetry.parentElement;
+  taskToRetrySpan.innerHTML = `<li id="task${taskId}">${taskToRetry.textContent}</li>${newBtnDiv}`;
+
+  const todoList = document.querySelector(".ToDo ul");
+  todoList.appendChild(taskToRetrySpan);
+
+  alert = `Task ${taskId} retried.`;
+
   attachButtonEventListeners();
-
-  if (taskToRetry) {
-    const todoList = document.querySelector(".ToDo ul");
-    todoList.appendChild(taskToRetry.parentElement);
-    alert = `Task ${taskId} retried.`;
-  }
 };
 
 // Event listener for retry buttons
